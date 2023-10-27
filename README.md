@@ -21,69 +21,69 @@ The diagram illustrates the deployment of the Movie Booking App on AWS Cloud.
 
 # 5. Tool Chain
 
-## | Competency | Skill | Skill Detail |
+| Competency | Skill | Skill Detail |
 
-## | Engineering Mindset | Networking and Content Delivery | |
+| Engineering Mindset | Networking and Content Delivery | |
 
-## | | Ways of Working | |
+| ---- | Ways of Working | ---- |
 
-## | | Consulting Mindset | |
+| ---- | Consulting Mindset | ---- |
 
-## | | DevOps | |
+| | DevOps | |
 
-## | Programming Languages | Application Language | Java |
+| Programming Languages | Application Language | Java |
 
-## | Products & Frameworks | Presentation | Angular/React |
+| Products & Frameworks | Presentation | Angular/React |
 
-## | | | Karma & Jasmine |
+| | | Karma & Jasmine |
 
-## | | Compute & Integration | Spring Boot |
+ | | Compute & Integration | Spring Boot |
 
-## | | | Kafka/Kube MQ/ActiveMQ/Rabbit MQ |
+ | | | Kafka/Kube MQ/ActiveMQ/Rabbit MQ |
 
-## | | | Docker |
+ | | | Docker |
 
-## | | Database & Storage | MySQL/Cassandra/Redis |
+ | | Database & Storage | MySQL/Cassandra/Redis |
 
-## | | Governance & Tooling | Git |
+ | | Governance & Tooling | Git |
 
-## | | | Maven |
+ | | | Maven |
 
-## | | | JUnit |
+ | | | JUnit |
 
-## | | | Mockito |
+ | | | Mockito |
 
-## | | | Logstash |
+ | | | Logstash |
 
-## | | | Prometheus & Grafana |
+ | | | Prometheus & Grafana |
 
-## | Engineering Quality | Code Quality | Sonar Cube |
+ | Engineering Quality | Code Quality | Sonar Cube |
 
-## | Platform | Cloud Tools | AWS ECS |
+ | Platform | Cloud Tools | AWS ECS |
 
-## | | | AWS DynamoDB/Aurora |
+ | | | AWS DynamoDB/Aurora |
 
-## | | | AWS Lambda |
+ | | | AWS Lambda |
 
-## | | | AWS Elastic Cache |
+ | | | AWS Elastic Cache |
 
-## | | | AWS Code Deploy |
+ | | | AWS Code Deploy |
 
-## | | | AWS API Gateway |
+ | | | AWS API Gateway |
 
-## | | | AWS Elastic Load Balancer |
+ | | | AWS Elastic Load Balancer |
 
-## | | | AWS SNS |
+ | | | AWS SNS |
 
 # 6. Development Flow
 
-## | No | MC | Competency | Section | Indicative Mechanism for Evaluation |
+ | No | MC | Competency | Section | Indicative Mechanism for Evaluation |
 
-## | 1 | Backend | Rest API, Database, Messaging, Log/Monitoring, Debugging & Troubleshooting | Click here | Code Submission and Evaluation, Panel Presentation |
+ | 1 | Backend | Rest API, Database, Messaging, Log/Monitoring, Debugging & Troubleshooting | Click here | Code Submission and Evaluation, Panel Presentation |
 
-## | 2 | Frontend | Angular/React | Click here | Code Submission and Evaluation, Panel Presentation |
+ | 2 | Frontend | Angular/React | Click here | Code Submission and Evaluation, Panel Presentation |
 
-## | 3 | Cloud | Compute, Identity, Compliance, Security and Content Delivery | Click here | Code Submission and Evaluation, Panel Presentation |
+ | 3 | Cloud | Compute, Identity, Compliance, Security and Content Delivery | Click here | Code Submission and Evaluation, Panel Presentation |
 
 # 7. Business Requirement
 
@@ -95,9 +95,9 @@ Create a static database as “Movie” and add the below fields
 • Movie name, Total number of tickets allotted and theatre name (Movie name and theatre name should be of composite primary key)
 There should be a predefined set of tickets assigned to each theatre against each movie. Just create sample 2 movies with 2 theatres assigned. This will be used for the upcoming user story to fetch the data.
 
-## | User Story # | User Story Name | User Story |
+ | User Story # | User Story Name | User Story |
 
-## | #US_01 | Registration and Login | As a user, I should be able to login/Register in the movie booking application.
+ | #US_01 | Registration and Login | As a user, I should be able to login/Register in the movie booking application.
 
 Acceptance Criteria:
 
@@ -112,7 +112,7 @@ Acceptance Criteria:
 
 ---
 
-## | #US_02 | View & Search Movies | As a user, I should be able to view all the recent movies opened for booking. User can search for any particular movie.
+ | #US_02 | View & Search Movies | As a user, I should be able to view all the recent movies opened for booking. User can search for any particular movie.
 
 Acceptance Criteria:
 
@@ -121,7 +121,7 @@ Acceptance Criteria:
 
 ---
 
-## | #US_03 | Book Tickets for a Movie | As a user, I should be able to book tickets for a movie and add the booking to a "Tickets" database table. Movie name and theatre name should be foreign keys in the "Tickets" table.
+ | #US_03 | Book Tickets for a Movie | As a user, I should be able to book tickets for a movie and add the booking to a "Tickets" database table. Movie name and theatre name should be foreign keys in the "Tickets" table.
 
 Acceptance Criteria:
 
@@ -130,7 +130,7 @@ Acceptance Criteria:
 
 ---
 
-## | #US_04 | View Booked Tickets and Update Ticket Status | As an admin, I should be able to view booked tickets and update the available tickets for a movie.
+ | #US_04 | View Booked Tickets and Update Ticket Status | As an admin, I should be able to view booked tickets and update the available tickets for a movie.
 
 Acceptance Criteria:
 

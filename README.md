@@ -8,16 +8,16 @@ The Movie Booking App is an application that allows users to register, log in, s
 
 # 2. Proposed Movie Booking App Wireframe
 
-![Alt text](image.png)
+![Alt text](resources/image.png)
 
 # 3. Application Architecture
 
-![Alt text](image-2.png)
+![Alt text](resources/image-2.png)
 
 # 4. Cloud Architecture
 
 The diagram illustrates the deployment of the Movie Booking App on AWS Cloud.
-![Alt text](image-1.png)
+![Alt text](resources/image-1.png)
 
 # 5. Tool Chain
 

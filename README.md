@@ -71,53 +71,28 @@ There should be a predefined set of tickets assigned to each theatre against eac
 | User Story # | User Story Name | User Story |
 | :---: | :---: | :---: |
 | #US_01 | Registration and Login | As a user, I should be able to login/Register in the movie booking application. Acceptance Criteria: 1. A logged-in user can login, forget their password, and reset their password. 2. A logged-in user cannot change their username. 3. A logged-in user can logout from their account. 4. A customer should provide First Name, Last Name, Email, Login Id, Password, Confirm Password, and Contact Number during registration. 5. All details fields are mandatory. 6. Login Id and Email must be unique. 7. Password and Confirm Password must match. 8. Show validation messages if any constraint is not satisfied. |
+| #US_02 | View & Search Movies | As a user, I should be able to view all the recent movies opened for booking. User can search for any particular movie. Acceptance Criteria: 1. User can view all released movies. 2. User can search for movies based on the movie name. |
+| #US_03 | Book Tickets for a Movie | As a user, I should be able to book tickets for a movie and add the booking to a "Tickets" database table. Movie name and theatre name should be foreign keys in the "Tickets" table. Acceptance Criteria: 1. User can book a movie ticket. 2. Details to be added: Movie Name, Theatre Name, Number of Tickets, Seat Number. |
+| #US_04 | View Booked Tickets and Update Ticket Status | As an admin, I should be able to view booked tickets and update the available tickets for a movie. Acceptance Criteria: 1. Admin can view booked tickets for a particular movie. 2. Check available tickets from the "Movie" table. 3. If quantity is 0, update ticket status as 'SOLD OUT'; else update as 'BOOK ASAP'. |
 
----
-
- | #US_02 | View & Search Movies | As a user, I should be able to view all the recent movies opened for booking. User can search for any particular movie.
-
-Acceptance Criteria:
-
-1. User can view all released movies.
-2. User can search for movies based on the movie name. |
-
----
-
- | #US_03 | Book Tickets for a Movie | As a user, I should be able to book tickets for a movie and add the booking to a "Tickets" database table. Movie name and theatre name should be foreign keys in the "Tickets" table.
-
-Acceptance Criteria:
-
-1. User can book a movie ticket.
-2. Details to be added: Movie Name, Theatre Name, Number of Tickets, Seat Number. |
-
----
-
- | #US_04 | View Booked Tickets and Update Ticket Status | As an admin, I should be able to view booked tickets and update the available tickets for a movie.
-
-Acceptance Criteria:
-
-1. Admin can view booked tickets for a particular movie.
-2. Check available tickets from the "Movie" table.
-3. If quantity is 0, update ticket status as 'SOLD OUT'; else update as 'BOOK ASAP'. |
-
----
 
 # 8. Rubrics/Expected Deliverables
 
     8.1 REST API:
         a.Use Spring Boot for REST endpoints.
         b. Implement HTTP methods: GET, POST, PUT, DELETE, PATCH.
-        | Method Type | Method value | Description |
-        | :---: | :---: | :---: | :---: |
-        | POST | /api/v1.0/moviebooking/register | Register as a new User |
-        | POST | /api/v1.0/moviebooking/register | Register as a new User |
-        | POST | /api/v1.0/moviebooking/register | Register as a new User |
-        | POST | /api/v1.0/moviebooking/register | Register as a new User |
-        | POST | /api/v1.0/moviebooking/register | Register as a new User |
-        | POST | /api/v1.0/moviebooking/register | Register as a new User |
-        | POST | /api/v1.0/moviebooking/register | Register as a new User |
-        | POST | /api/v1.0/moviebooking/register | Register as a new User |
-        ---------------------------------------------------
+
+        | Method Type | Method value                    | Description            |
+        | :---:       | :---:                           | :---:                  |
+        | POST        | /api/v1.0/moviebooking/register | Register as a new User |
+        | POST        | /api/v1.0/moviebooking/register | Register as a new User |
+        | POST        | /api/v1.0/moviebooking/register | Register as a new User |
+        | POST        | /api/v1.0/moviebooking/register | Register as a new User |
+        | POST        | /api/v1.0/moviebooking/register | Register as a new User |
+        | POST        | /api/v1.0/moviebooking/register | Register as a new User |
+        | POST        | /api/v1.0/moviebooking/register | Register as a new User |
+        | POST        | /api/v1.0/moviebooking/register | Register as a new User |
+        
         c. Movie name may be partial or complete username
         d.	Use necessary configuration in place for REST API in application. Properties or bootstrap. Properties or application.yml; whichever is applicable.
         e.	Package Structure for Spring Boot Project will be like com. moviebookingapp. With proper naming conventions for package and beans.

@@ -52,13 +52,11 @@ The diagram illustrates the deployment of the Movie Booking App on AWS Cloud.
 
 # 6. Development Flow
 
- | No | MC | Competency | Section | Indicative Mechanism for Evaluation |
-
- | 1 | Backend | Rest API, Database, Messaging, Log/Monitoring, Debugging & Troubleshooting | Click here | Code Submission and Evaluation, Panel Presentation |
-
- | 2 | Frontend | Angular/React | Click here | Code Submission and Evaluation, Panel Presentation |
-
- | 3 | Cloud | Compute, Identity, Compliance, Security and Content Delivery | Click here | Code Submission and Evaluation, Panel Presentation |
+| No | MC       | Competency                                                                 | Section    | Indicative Mechanism for Evaluation                |
+|:---:|:---:    |:---:                                                                       |:---:       |  :---:                                             |
+| 1  | Backend  | Rest API, Database, Messaging, Log/Monitoring, Debugging & Troubleshooting | Click here | Code Submission and Evaluation, Panel Presentation |
+| 2  | Frontend | Angular/React                                                              | Click here | Code Submission and Evaluation, Panel Presentation |
+| 3  | Cloud    | Compute, Identity, Compliance, Security and Content Delivery               | Click here | Code Submission and Evaluation, Panel Presentation |
 
 # 7. Business Requirement
 
@@ -70,20 +68,9 @@ Create a static database as “Movie” and add the below fields
 • Movie name, Total number of tickets allotted and theatre name (Movie name and theatre name should be of composite primary key)
 There should be a predefined set of tickets assigned to each theatre against each movie. Just create sample 2 movies with 2 theatres assigned. This will be used for the upcoming user story to fetch the data.
 
- | User Story # | User Story Name | User Story |
-
- | #US_01 | Registration and Login | As a user, I should be able to login/Register in the movie booking application.
-
-Acceptance Criteria:
-
-1. A logged-in user can login, forget their password, and reset their password.
-2. A logged-in user cannot change their username.
-3. A logged-in user can logout from their account.
-4. A customer should provide First Name, Last Name, Email, Login Id, Password, Confirm Password, and Contact Number during registration.
-5. All details fields are mandatory.
-6. Login Id and Email must be unique.
-7. Password and Confirm Password must match.
-8. Show validation messages if any constraint is not satisfied. |
+| User Story # | User Story Name | User Story |
+| :---: | :---: | :---: |
+| #US_01 | Registration and Login | As a user, I should be able to login/Register in the movie booking application. Acceptance Criteria: 1. A logged-in user can login, forget their password, and reset their password. 2. A logged-in user cannot change their username. 3. A logged-in user can logout from their account. 4. A customer should provide First Name, Last Name, Email, Login Id, Password, Confirm Password, and Contact Number during registration. 5. All details fields are mandatory. 6. Login Id and Email must be unique. 7. Password and Confirm Password must match. 8. Show validation messages if any constraint is not satisfied. |
 
 ---
 
@@ -121,21 +108,14 @@ Acceptance Criteria:
         a.Use Spring Boot for REST endpoints.
         b. Implement HTTP methods: GET, POST, PUT, DELETE, PATCH.
         | Method Type | Method value | Description |
-        ---------------------------------------------------
+        | :---: | :---: | :---: | :---: |
         | POST | /api/v1.0/moviebooking/register | Register as a new User |
-        ---------------------------------------------------
         | POST | /api/v1.0/moviebooking/register | Register as a new User |
-        ---------------------------------------------------
         | POST | /api/v1.0/moviebooking/register | Register as a new User |
-        ---------------------------------------------------
         | POST | /api/v1.0/moviebooking/register | Register as a new User |
-        ---------------------------------------------------
         | POST | /api/v1.0/moviebooking/register | Register as a new User |
-        ---------------------------------------------------
         | POST | /api/v1.0/moviebooking/register | Register as a new User |
-        ---------------------------------------------------
         | POST | /api/v1.0/moviebooking/register | Register as a new User |
-        ---------------------------------------------------
         | POST | /api/v1.0/moviebooking/register | Register as a new User |
         ---------------------------------------------------
         c. Movie name may be partial or complete username

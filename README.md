@@ -3,8 +3,7 @@
 # UseCase:
 
 # 1. Problem Statement
-
-The Movie Booking App is an application that allows users to register, log in, search for movies, and book tickets. Users can view available movies and theaters, book tickets, and admins can manage the ticket inventory.
+    The Movie Booking App is an application that allows users to register, log in, search for movies, and book tickets. Users can view available movies and theaters, book tickets, and admins can manage the ticket inventory.
 
 # 2. Proposed Movie Booking App Wireframe
 
@@ -60,13 +59,11 @@ The diagram illustrates the deployment of the Movie Booking App on AWS Cloud.
 
 # 7. Business Requirement
 
-As an application developer, develop frontend, middleware and deploy the Movie Booking App with below guidelines:
-
-# Pre-requisite before implementing the user story:
-
-Create a static database as “Movie” and add the below fields
-• Movie name, Total number of tickets allotted and theatre name (Movie name and theatre name should be of composite primary key)
-There should be a predefined set of tickets assigned to each theatre against each movie. Just create sample 2 movies with 2 theatres assigned. This will be used for the upcoming user story to fetch the data.
+    As an application developer, develop frontend, middleware and deploy the Movie Booking App with below guidelines:
+    # Pre-requisite before implementing the user story:
+        Create a static database as “Movie” and add the below fields:
+        • Movie name, Total number of tickets allotted and theatre name (Movie name and theatre name should be of composite primary key)
+        • There should be a predefined set of tickets assigned to each theatre against each movie. Just create sample 2 movies with 2 theatres assigned. This will be used for the upcoming user story to fetch the data.
 
 | User Story # | User Story Name | User Story |
 | :---: | :---: | :---: |
@@ -157,7 +154,8 @@ There should be a predefined set of tickets assigned to each theatre against eac
 
 Note – Minimum two rest endpoints should be hosted in cloud.
 10.3 Frontend Deployment
-Deploy the Frontend solution as follows: 1. Maintain the production build of Frontend application on S3 bucket. 2. Configure an EC2 instance to access Frontend artifacts from S3 bucket and expose it as dynamic web application. 3. Configure the S3 to cache the JavaScript build files. 4. Configure the Route 53 to register domain name to expose the Frontend solution. 5. Ensure that Privacy Protection feature is enabled for Amazon Route 53 domain.
+
+    Deploy the Frontend solution as follows: 1. Maintain the production build of Frontend application on S3 bucket. 2. Configure an EC2 instance to access Frontend artifacts from S3 bucket and expose it as dynamic web application. 3. Configure the S3 to cache the JavaScript build files. 4. Configure the Route 53 to register domain name to expose the Frontend solution. 5. Ensure that Privacy Protection feature is enabled for Amazon Route 53 domain.
 
 # 11. Methodology
 

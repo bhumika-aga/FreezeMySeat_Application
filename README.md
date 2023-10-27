@@ -21,59 +21,34 @@ The diagram illustrates the deployment of the Movie Booking App on AWS Cloud.
 
 # 5. Tool Chain
 
-| Competency | Skill | Skill Detail |
-
-| Engineering Mindset | Networking and Content Delivery | |
-
-| ---- | Ways of Working | ---- |
-
-| ---- | Consulting Mindset | ---- |
-
-| | DevOps | |
-
-| Programming Languages | Application Language | Java |
-
-| Products & Frameworks | Presentation | Angular/React |
-
-| | | Karma & Jasmine |
-
- | | Compute & Integration | Spring Boot |
-
- | | | Kafka/Kube MQ/ActiveMQ/Rabbit MQ |
-
- | | | Docker |
-
- | | Database & Storage | MySQL/Cassandra/Redis |
-
- | | Governance & Tooling | Git |
-
- | | | Maven |
-
- | | | JUnit |
-
- | | | Mockito |
-
- | | | Logstash |
-
- | | | Prometheus & Grafana |
-
- | Engineering Quality | Code Quality | Sonar Cube |
-
- | Platform | Cloud Tools | AWS ECS |
-
- | | | AWS DynamoDB/Aurora |
-
- | | | AWS Lambda |
-
- | | | AWS Elastic Cache |
-
- | | | AWS Code Deploy |
-
- | | | AWS API Gateway |
-
- | | | AWS Elastic Load Balancer |
-
- | | | AWS SNS |
+| Competency            | Skill                           | Skill Detail                     |
+|   :---:               |        :---:                    |        :---:                     |
+| Engineering Mindset   | Networking and Content Delivery |                                  |
+|                       | Ways of Working                 |                                  |
+|                       | Consulting Mindset              |                                  |
+|                       | DevOps                          |                                  |
+| Programming Languages | Application Language            | Java                             |
+| Products & Frameworks | Presentation                    | Angular/React                    |
+|                       |                                 | Karma & Jasmine                  |
+|                       | Compute & Integration           | Spring Boot                      |
+|                       |                                 | Kafka/Kube MQ/ActiveMQ/Rabbit MQ |
+|                       |                                 | Docker                           |
+|                       | Database & Storage              | MySQL/Cassandra/Redis            |
+|                       | Governance & Tooling            | Git                              |
+|                       |                                 | Maven                            |
+|                       |                                 | JUnit                            |
+|                       |                                 | Mockito                          |
+|                       |                                 | Logstash                         |
+|                       |                                 | Prometheus & Grafana             |
+| Engineering Quality   | Code Quality                    | Sonar Cube                       |
+| Platform              | Cloud Tools                     | AWS ECS                          |
+|                       |                                 | AWS DynamoDB/Aurora              |
+|                       |                                 | AWS Lambda                       |
+|                       |                                 | AWS Elastic Cache                |
+|                       |                                 | AWS Code Deploy                  |
+|                       |                                 | AWS API Gateway                  |
+|                       |                                 | AWS Elastic Load Balancer        |
+|                       |                                 | AWS SNS                          |
 
 # 6. Development Flow
 

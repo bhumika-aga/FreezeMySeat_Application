@@ -8,12 +8,9 @@ import org.springframework.stereotype.Repository;
 
 import com.moviebookingapp.MovieBookingService.entity.Show;
 
-import jakarta.transaction.Transactional;
-
 @Repository
-@Transactional
 public interface ShowRepository extends JpaRepository<Show, String> {
 
-	@Query(value = "select s from Show s where s.theatre.theatreId= :id")
+	@Query(value = "select s from Show s join s.theatre t where t.theatreId= :theatreId")
 	List<Show> getShowsByTheatreId(String theatreId);
 }

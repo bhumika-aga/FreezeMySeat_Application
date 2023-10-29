@@ -21,7 +21,6 @@ import com.moviebookingapp.MovieBookingService.entity.Theatre;
 import com.moviebookingapp.MovieBookingService.exception.MovieNotFoundException;
 import com.moviebookingapp.MovieBookingService.exception.TheatreNotFoundException;
 import com.moviebookingapp.MovieBookingService.service.TheatreService;
-import com.moviebookingapp.MovieBookingService.service.impl.KafkaMessageProducer;
 
 @RestController
 @CrossOrigin("*")
@@ -36,8 +35,8 @@ public class TheatreController {
 	@Autowired
 	private JwtService jwtService;
 
-	@Autowired
-	private KafkaMessageProducer producer;
+//	@Autowired
+//	private KafkaMessageProducer producer;
 
 	@PostMapping("/addTheatre")
 	public ResponseEntity<?> addTheatre(@RequestBody Theatre theatre, @RequestHeader("Authorization") String auth) {
@@ -45,7 +44,7 @@ public class TheatreController {
 			if (jwtService.getRole(auth.substring(7)).equalsIgnoreCase("ADMIN")) {
 				return new ResponseEntity<>("Only Admins are allowed to perform this activity!", HttpStatus.FORBIDDEN);
 			}
-			producer.pushMessage("Theatre Added!");
+//			producer.pushMessage("Theatre Added!");
 			logger.info("New theatre added successfully!");
 			return new ResponseEntity<>(theatreService.addTheatre(theatre), HttpStatus.CREATED);
 		} catch (Exception e) {
@@ -101,7 +100,7 @@ public class TheatreController {
 			if (jwtService.getRole(auth.substring(7)).equalsIgnoreCase("ADMIN")) {
 				return new ResponseEntity<>("Only Admins are allowed to perform this activity!", HttpStatus.FORBIDDEN);
 			}
-			producer.pushMessage("Theatre Updated!");
+//			producer.pushMessage("Theatre Updated!");
 			logger.info("Theatre updated successfully!");
 			return new ResponseEntity<>(theatreService.updateTheatre(theatre), HttpStatus.OK);
 		} catch (Exception e) {
@@ -116,7 +115,7 @@ public class TheatreController {
 			if (jwtService.getRole(auth.substring(7)).equalsIgnoreCase("ADMIN")) {
 				return new ResponseEntity<>("Only Admins are allowed to perform this activity!", HttpStatus.FORBIDDEN);
 			}
-			producer.pushMessage("Theatre Deleted!");
+//			producer.pushMessage("Theatre Deleted!");
 			logger.info("Theatre Deleted successfully!");
 			return new ResponseEntity<>(theatreService.deleteTheatre(theatreId), HttpStatus.OK);
 		} catch (Exception e) {

@@ -2,12 +2,9 @@ package com.moviebookingapp.MovieBookingService.service;
 
 import java.util.List;
 
-import org.springframework.stereotype.Service;
-
 import com.moviebookingapp.MovieBookingService.entity.Seat;
 import com.moviebookingapp.MovieBookingService.exception.SeatNotFoundException;
 
-@Service
 public interface SeatService {
 
 	public Seat addSeat(Seat seat) throws SeatNotFoundException;

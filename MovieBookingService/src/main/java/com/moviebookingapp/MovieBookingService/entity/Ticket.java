@@ -10,6 +10,7 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -17,7 +18,10 @@ import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 
+@Entity
+@Table(name = "ticket")
 public class Ticket {
 
 	@Id
@@ -31,17 +35,17 @@ public class Ticket {
 	private LocalDate bookingdate;
 	@OneToMany
 	private List<Seat> seatsBooked;
+	@JsonIgnore
 	@OneToMany
+	private List<Theatre> theatre;
 	@JsonIgnore
-	private Theatre theatre;
 	@ManyToMany
+	private List<Movie> movie;
 	@JsonIgnore
-	private Movie movie;
-	@JsonIgnore
-	@OneToOne(mappedBy = "booked")
+	@OneToOne(mappedBy = "booking")
 	private Show show;
-	@ManyToOne
 	@JsonIgnore
+	@ManyToOne
 	private User user;
 
 	public long getNoOfSeats() {
@@ -76,19 +80,19 @@ public class Ticket {
 		this.seatsBooked = seatsBooked;
 	}
 
-	public Theatre getTheatre() {
+	public List<Theatre> getTheatre() {
 		return theatre;
 	}
 
-	public void setTheatre(Theatre theatre) {
+	public void setTheatre(List<Theatre> theatre) {
 		this.theatre = theatre;
 	}
 
-	public Movie getMovie() {
+	public List<Movie> getMovie() {
 		return movie;
 	}
 
-	public void setMovie(Movie movie) {
+	public void setMovie(List<Movie> movie) {
 		this.movie = movie;
 	}
 
@@ -122,8 +126,8 @@ public class Ticket {
 	public Ticket() {
 	}
 
-	public Ticket(long noOfSeats, boolean ticketStatus, LocalDate bookingdate, List<Seat> seatsBooked, Theatre theatre,
-			Movie movie, Show show, User user) {
+	public Ticket(long noOfSeats, boolean ticketStatus, LocalDate bookingdate, List<Seat> seatsBooked,
+			List<Theatre> theatre, List<Movie> movie, Show show, User user) {
 		this.noOfSeats = noOfSeats;
 		this.ticketStatus = ticketStatus;
 		this.bookingdate = bookingdate;

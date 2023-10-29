@@ -1,4 +1,4 @@
-package com.moviebookingapp.FreezeMySeatServer.config;
+package com.moviebookingapp.MovieBookingService.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -14,8 +14,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-import com.moviebookingapp.FreezeMySeatServer.component.JwtFilter;
-
 @Configuration
 @EnableWebSecurity
 @EnableMethodSecurity(prePostEnabled = true)
@@ -26,11 +24,15 @@ public class SecurityConfig {
 
 	@Bean
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-		return http.csrf((csrf) -> csrf.disable())
+		http.csrf((csrf) -> csrf.disable())
 				.sessionManagement((session) -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-				.authorizeHttpRequests((request) -> request.requestMatchers("/api/v1.0/moviebooking/**").authenticated()
-						.requestMatchers("/**").permitAll())
-				.addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class).build();
+				.authorizeHttpRequests((request) -> request
+						.requestMatchers("/api/v1.0/moviebooking/user/register", "/auth/generateToken", "/h2-console")
+						.permitAll().requestMatchers("/api/v1.0/moviebooking/**").authenticated().requestMatchers("/**")
+						.permitAll())
+				.addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
+		http.headers(headers -> headers.frameOptions().sameOrigin());
+		return http.build();
 	}
 
 	@Bean

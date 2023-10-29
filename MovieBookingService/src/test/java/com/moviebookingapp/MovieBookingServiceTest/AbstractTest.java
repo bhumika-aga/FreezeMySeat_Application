@@ -1,4 +1,4 @@
-package com.moviebookingapp.FreezeMySeatServer;
+package com.moviebookingapp.MovieBookingServiceTest;
 
 import java.io.IOException;
 

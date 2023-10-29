@@ -3,6 +3,7 @@ package com.moviebookingapp.MovieBookingService.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.moviebookingapp.MovieBookingService.entity.Seat;
 import com.moviebookingapp.MovieBookingService.entity.SeatStatus;
@@ -10,6 +11,7 @@ import com.moviebookingapp.MovieBookingService.exception.SeatNotFoundException;
 import com.moviebookingapp.MovieBookingService.repository.SeatRepository;
 import com.moviebookingapp.MovieBookingService.service.SeatService;
 
+@Service
 public class SeatServiceImpl implements SeatService {
 
 	@Autowired

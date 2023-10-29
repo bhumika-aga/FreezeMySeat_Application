@@ -1,28 +1,35 @@
-package com.moviebookingapp.FreezeMySeatServer.service.impl;
+package com.moviebookingapp.MovieBookingService.service.impl;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
 
-import com.moviebookingapp.FreezeMySeatServer.entity.User;
-import com.moviebookingapp.FreezeMySeatServer.exception.UserCreationException;
-import com.moviebookingapp.FreezeMySeatServer.exception.UserNotFoundException;
-import com.moviebookingapp.FreezeMySeatServer.repository.UserRepository;
-import com.moviebookingapp.FreezeMySeatServer.service.UserService;
+import com.moviebookingapp.MovieBookingService.entity.User;
+import com.moviebookingapp.MovieBookingService.exception.UserCreationException;
+import com.moviebookingapp.MovieBookingService.exception.UserNotFoundException;
+import com.moviebookingapp.MovieBookingService.repository.UserRepository;
+import com.moviebookingapp.MovieBookingService.service.UserService;
 
+@Service
 public class UserServiceImpl implements UserService {
 
 	@Autowired
 	private UserRepository userRepository;
 
+	@Autowired
+	private PasswordEncoder encoder;
+
 	@Override
 	public User addUser(User user) throws UserCreationException {
-		if (user.equals(null) || !userRepository.findById(user.getUserId()).get().equals(null)) {
+		if (user.equals(null) || !userRepository.findByUsername(user.getUsername()).equals(null)) {
 			throw new UserCreationException("User could not be created!");
 		}
 		if (user.getUserRole().equals(null)) {
 			user.setUserRole("USER");
 		}
+		user.setPassword(encoder.encode(user.getPassword()));
 		return userRepository.saveAndFlush(user);
 	}
 
@@ -92,7 +99,7 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public User updateUser(User user) throws UserNotFoundException {
-		if (user.equals(null) || userRepository.findById(user.getUserId()).get().equals(null)) {
+		if (user.equals(null) || userRepository.findByUsername(user.getUsername()).equals(null)) {
 			throw new UserNotFoundException("User does not exist!");
 		}
 		return userRepository.saveAndFlush(user);

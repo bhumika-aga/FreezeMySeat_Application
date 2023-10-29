@@ -3,19 +3,17 @@ package com.moviebookingapp.MovieBookingService.service;
 import java.time.LocalDate;
 import java.util.List;
 
-import org.springframework.stereotype.Service;
-
 import com.moviebookingapp.MovieBookingService.entity.Movie;
 import com.moviebookingapp.MovieBookingService.exception.MovieNotFoundException;
 import com.moviebookingapp.MovieBookingService.exception.ShowNotFoundException;
 import com.moviebookingapp.MovieBookingService.exception.TheatreNotFoundException;
 
-@Service
 public interface MovieService {
 
 	public Movie addMovie(Movie movie) throws Exception;
 
-	public Movie addMovieToShow(Movie movie, String showId) throws MovieNotFoundException, ShowNotFoundException;
+	public Movie addMovieToShowAndTheatre(Movie movie, String showId, String theatreId)
+			throws MovieNotFoundException, ShowNotFoundException, TheatreNotFoundException;
 
 	public List<Movie> viewAllMovies();
 

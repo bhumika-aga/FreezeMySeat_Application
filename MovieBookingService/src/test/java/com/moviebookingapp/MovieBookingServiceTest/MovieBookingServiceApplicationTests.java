@@ -1,13 +1,12 @@
-package com.moviebookingapp.FreezeMySeatServer;
+package com.moviebookingapp.MovieBookingServiceTest;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
-class FreezeMySeatServerApplicationTests {
+@SpringBootTest()
+class MovieBookingServiceApplicationTests {
 
 	@Test
 	void contextLoads() {
 	}
-
 }

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.moviebookingapp.MovieBookingService.entity.Show;
 import com.moviebookingapp.MovieBookingService.exception.ScreenNotFoundException;
@@ -15,6 +16,7 @@ import com.moviebookingapp.MovieBookingService.repository.ShowRepository;
 import com.moviebookingapp.MovieBookingService.repository.TheatreRepository;
 import com.moviebookingapp.MovieBookingService.service.ShowService;
 
+@Service
 public class ShowServiceImpl implements ShowService {
 
 	@Autowired

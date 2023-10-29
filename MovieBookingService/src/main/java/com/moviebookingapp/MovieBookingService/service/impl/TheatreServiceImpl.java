@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.moviebookingapp.MovieBookingService.entity.Show;
 import com.moviebookingapp.MovieBookingService.entity.Theatre;
@@ -13,6 +14,7 @@ import com.moviebookingapp.MovieBookingService.repository.MovieRepository;
 import com.moviebookingapp.MovieBookingService.repository.TheatreRepository;
 import com.moviebookingapp.MovieBookingService.service.TheatreService;
 
+@Service
 public class TheatreServiceImpl implements TheatreService {
 
 	@Autowired

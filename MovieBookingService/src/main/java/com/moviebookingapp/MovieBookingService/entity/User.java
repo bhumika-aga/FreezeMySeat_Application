@@ -1,15 +1,43 @@
 package com.moviebookingapp.MovieBookingService.entity;
 
-import java.util.List;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
-import jakarta.persistence.OneToMany;
-
+@Entity
+@Table(name = "customer")
 public class User {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private String userId;
+	private String firstName;
+	private String lastName;
+	@Column(unique = true)
 	private String username;
 	private String password;
-	@OneToMany
-	private List<Ticket> bookings;
+	private String email;
+	private String contact;
+	private String userRole;
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
 
 	public String getUsername() {
 		return username;
@@ -27,16 +55,52 @@ public class User {
 		this.password = password;
 	}
 
-	public List<Ticket> getBookings() {
-		return bookings;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setBookings(List<Ticket> bookings) {
-		this.bookings = bookings;
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getContact() {
+		return contact;
+	}
+
+	public void setContact(String contact) {
+		this.contact = contact;
+	}
+
+	public String getUserRole() {
+		return userRole;
+	}
+
+	public void setUserRole(String userRole) {
+		this.userRole = userRole;
+	}
+
+	public String getUserId() {
+		return userId;
 	}
 
 	@Override
 	public String toString() {
-		return "User [username=" + username + ", password=" + password + ", bookings=" + bookings + "]";
+		return "User [userId=" + userId + ", firstName=" + firstName + ", lastName=" + lastName + ", username="
+				+ username + ", password=" + password + ", email=" + email + ", contact=" + contact + ", userRole="
+				+ userRole + "]";
+	}
+
+	public User() {
+	}
+
+	public User(String firstName, String lastName, String username, String password, String email, String contact,
+			String userRole) {
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.username = username;
+		this.password = password;
+		this.email = email;
+		this.contact = contact;
+		this.userRole = userRole;
 	}
 }

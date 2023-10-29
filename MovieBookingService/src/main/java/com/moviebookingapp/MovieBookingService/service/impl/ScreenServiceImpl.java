@@ -3,6 +3,7 @@ package com.moviebookingapp.MovieBookingService.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.moviebookingapp.MovieBookingService.entity.Screen;
 import com.moviebookingapp.MovieBookingService.entity.Theatre;
@@ -12,6 +13,7 @@ import com.moviebookingapp.MovieBookingService.repository.ScreenRepository;
 import com.moviebookingapp.MovieBookingService.repository.TheatreRepository;
 import com.moviebookingapp.MovieBookingService.service.ScreenService;
 
+@Service
 public class ScreenServiceImpl implements ScreenService {
 
 	@Autowired

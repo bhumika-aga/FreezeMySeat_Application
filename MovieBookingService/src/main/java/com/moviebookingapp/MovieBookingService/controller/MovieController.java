@@ -27,7 +27,6 @@ import com.moviebookingapp.MovieBookingService.exception.ShowNotFoundException;
 import com.moviebookingapp.MovieBookingService.exception.TheatreNotFoundException;
 import com.moviebookingapp.MovieBookingService.repository.TheatreRepository;
 import com.moviebookingapp.MovieBookingService.service.MovieService;
-import com.moviebookingapp.MovieBookingService.service.impl.KafkaMessageProducer;
 
 @RestController
 @CrossOrigin("*")
@@ -45,19 +44,25 @@ public class MovieController {
 	@Autowired
 	private JwtService jwtService;
 
-	@Autowired
-	private KafkaMessageProducer producer;
+//	@Autowired
+//	private KafkaMessageProducer producer;
 
 	@PostMapping("/addMovie")
-	public ResponseEntity<?> addMovie(@RequestBody Movie movie, @RequestHeader("Authorization") String auth)
-			throws Exception {
+	public ResponseEntity<?> addMovie(@RequestBody Movie movie, @RequestParam(required = false) String showId,
+			@RequestParam(required = false) String theatreId, @RequestHeader("Authorization") String auth)
+			throws ShowNotFoundException, TheatreNotFoundException, Exception {
 		try {
 			if (jwtService.getRole(auth.substring(7)).equalsIgnoreCase("ADMIN")) {
 				return new ResponseEntity<>("Only Admins are allowed to perform this activity!", HttpStatus.FORBIDDEN);
 			}
-			producer.pushMessage("Movie " + movie.getMovieName() + " created!");
+//			producer.pushMessage("Movie " + movie.getMovieName() + " created!");
 			logger.info("Movie Added Successfully!");
-			return new ResponseEntity<>(movieService.addMovie(movie), HttpStatus.CREATED);
+			Movie newMovie = movieService.addMovieToShowAndTheatre(movie, showId, theatreId);
+			return new ResponseEntity<>(newMovie, HttpStatus.CREATED);
+		} catch (TheatreNotFoundException e) {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		} catch (ShowNotFoundException e) {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		} catch (Exception e) {
 			logger.error("Movie Could Not Be Added!");
 			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
@@ -128,31 +133,10 @@ public class MovieController {
 			} else if (movie.equals(null)) {
 				return new ResponseEntity<>("Please Enter Movie Details!", HttpStatus.NO_CONTENT);
 			}
-			producer.pushMessage("Movie updated successfully!");
+//			producer.pushMessage("Movie updated successfully!");
 			logger.info("Movie Updated Successfully!");
 			return new ResponseEntity<>(movieService.updateMovie(movie), HttpStatus.OK);
 		} catch (MovieNotFoundException e) {
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-		} catch (Exception e) {
-			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-		}
-	}
-
-	@PutMapping("/mapMovie")
-	public ResponseEntity<?> addMovieToShow(@RequestBody Movie movie, @RequestParam(required = false) String showId,
-			@RequestHeader("Authorization") String auth) throws MovieNotFoundException, ShowNotFoundException {
-		try {
-			if (!jwtService.getRole(auth.substring(7)).equalsIgnoreCase("ADMIN")) {
-				return new ResponseEntity<>("Only Admins are allowed to perform this activity!", HttpStatus.FORBIDDEN);
-			} else if (movie.equals(null)) {
-				return new ResponseEntity<>("Please Enter Movie Details!", HttpStatus.NO_CONTENT);
-			}
-			producer.pushMessage("Movie added!");
-			logger.info("Movie Added!");
-			return new ResponseEntity<>(movieService.addMovieToShow(movie, showId), HttpStatus.OK);
-		} catch (MovieNotFoundException e) {
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-		} catch (ShowNotFoundException e) {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		} catch (Exception e) {
 			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
@@ -166,7 +150,7 @@ public class MovieController {
 			if (!jwtService.getRole(auth.substring(7)).equalsIgnoreCase("ADMIN")) {
 				return new ResponseEntity<>("Only Admins are allowed to perform this activity!", HttpStatus.FORBIDDEN);
 			}
-			producer.pushMessage("Movie deleted");
+//			producer.pushMessage("Movie deleted");
 			logger.info("Movie Removed!");
 			return new ResponseEntity<>(movieService.removeMovie(movieId), HttpStatus.OK);
 		} catch (MovieNotFoundException e) {

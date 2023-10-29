@@ -25,7 +25,6 @@ import com.moviebookingapp.MovieBookingService.exception.ScreenNotFoundException
 import com.moviebookingapp.MovieBookingService.exception.ShowNotFoundException;
 import com.moviebookingapp.MovieBookingService.exception.TheatreNotFoundException;
 import com.moviebookingapp.MovieBookingService.service.ShowService;
-import com.moviebookingapp.MovieBookingService.service.impl.KafkaMessageProducer;
 
 @RestController
 @CrossOrigin("*")
@@ -40,8 +39,8 @@ public class ShowController {
 	@Autowired
 	private JwtService jwtService;
 
-	@Autowired
-	private KafkaMessageProducer producer;
+//	@Autowired
+//	private KafkaMessageProducer producer;
 
 	@PostMapping("/add")
 	public ResponseEntity<?> addShow(@RequestBody Show show, @RequestParam(required = false) String theatreId,
@@ -51,7 +50,7 @@ public class ShowController {
 			if (jwtService.getRole(auth.substring(7)).equalsIgnoreCase("ADMIN")) {
 				return new ResponseEntity<>("Only Admins are allowed to perform this activity!", HttpStatus.FORBIDDEN);
 			}
-			producer.pushMessage("Show added!");
+//			producer.pushMessage("Show added!");
 			logger.info("Show added successfully!");
 			return new ResponseEntity<>(showService.addShow(show, theatreId, screenId), HttpStatus.CREATED);
 		} catch (TheatreNotFoundException e) {
@@ -115,7 +114,7 @@ public class ShowController {
 			if (jwtService.getRole(auth.substring(7)).equalsIgnoreCase("ADMIN")) {
 				return new ResponseEntity<>("Only Admins are allowed to perform this activity!", HttpStatus.FORBIDDEN);
 			}
-			producer.pushMessage("Show updated!");
+//			producer.pushMessage("Show updated!");
 			logger.info("Show updated successfully!");
 			return new ResponseEntity<>(showService.updateShow(show, theatreId, screenId), HttpStatus.OK);
 		} catch (TheatreNotFoundException e) {
@@ -136,7 +135,7 @@ public class ShowController {
 			if (jwtService.getRole(auth.substring(7)).equalsIgnoreCase("ADMIN")) {
 				return new ResponseEntity<>("Only Admins are allowed to perform this activity!", HttpStatus.FORBIDDEN);
 			}
-			producer.pushMessage("Show removed");
+//			producer.pushMessage("Show removed");
 			logger.info("Show removed successfully!");
 			return new ResponseEntity<>(showService.removeShow(showId), HttpStatus.OK);
 		} catch (ShowNotFoundException e) {

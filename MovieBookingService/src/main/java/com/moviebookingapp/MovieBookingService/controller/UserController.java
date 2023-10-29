@@ -1,4 +1,4 @@
-package com.moviebookingapp.FreezeMySeatServer.controller;
+package com.moviebookingapp.MovieBookingService.controller;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -19,11 +19,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.moviebookingapp.FreezeMySeatServer.component.JwtService;
-import com.moviebookingapp.FreezeMySeatServer.entity.User;
-import com.moviebookingapp.FreezeMySeatServer.exception.UserCreationException;
-import com.moviebookingapp.FreezeMySeatServer.exception.UserNotFoundException;
-import com.moviebookingapp.FreezeMySeatServer.service.UserService;
+import com.moviebookingapp.MovieBookingService.config.JwtService;
+import com.moviebookingapp.MovieBookingService.entity.User;
+import com.moviebookingapp.MovieBookingService.exception.UserCreationException;
+import com.moviebookingapp.MovieBookingService.exception.UserNotFoundException;
+import com.moviebookingapp.MovieBookingService.service.UserService;
 
 @RestController
 @CrossOrigin("*")
@@ -43,7 +43,8 @@ public class UserController {
 	@PostMapping("/register")
 	public ResponseEntity<?> registerUser(@RequestBody User user) throws UserCreationException {
 		try {
-			return new ResponseEntity<>(userService.addUser(user), HttpStatus.CREATED);
+			User newUser = userService.addUser(user);
+			return new ResponseEntity<>(newUser, HttpStatus.CREATED);
 		} catch (UserCreationException e) {
 			return new ResponseEntity<>("Registration Failed!", HttpStatus.CONFLICT);
 		} catch (Exception e) {
@@ -52,12 +53,11 @@ public class UserController {
 	}
 
 	@PostMapping("/login")
-	public ResponseEntity<?> login(@RequestBody User user) throws UserNotFoundException {
+	public ResponseEntity<?> login(@RequestParam String username, @RequestParam String password)
+			throws UserNotFoundException {
 		try {
-			String username = user.getUsername();
-			String password = user.getPassword();
 			Authentication auth = null;
-			auth = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(password, password));
+			auth = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
 			if (!auth.isAuthenticated()) {
 				map.put("Message:", "User login failed!");
 				map.put("Token:", null);

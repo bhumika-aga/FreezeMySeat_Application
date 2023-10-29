@@ -2,13 +2,10 @@ package com.moviebookingapp.MovieBookingService.service;
 
 import java.util.List;
 
-import org.springframework.stereotype.Service;
-
 import com.moviebookingapp.MovieBookingService.entity.Theatre;
 import com.moviebookingapp.MovieBookingService.exception.MovieNotFoundException;
 import com.moviebookingapp.MovieBookingService.exception.TheatreNotFoundException;
 
-@Service
 public interface TheatreService {
 
 	public Theatre addTheatre(Theatre theatre) throws Exception;

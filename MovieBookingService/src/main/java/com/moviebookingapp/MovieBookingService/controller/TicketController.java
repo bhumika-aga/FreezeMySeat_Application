@@ -23,7 +23,6 @@ import com.moviebookingapp.MovieBookingService.exception.ShowNotFoundException;
 import com.moviebookingapp.MovieBookingService.exception.TicketNotFoundException;
 import com.moviebookingapp.MovieBookingService.exception.UserNotFoundException;
 import com.moviebookingapp.MovieBookingService.service.TicketService;
-import com.moviebookingapp.MovieBookingService.service.impl.KafkaMessageProducer;
 
 @RestController
 @CrossOrigin("*")
@@ -38,8 +37,8 @@ public class TicketController {
 	@Autowired
 	private JwtService jwtService;
 
-	@Autowired
-	private KafkaMessageProducer producer;
+//	@Autowired
+//	private KafkaMessageProducer producer;
 
 	@PostMapping(value = "/createTicket", consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> addTicket(@RequestBody Ticket ticket, @RequestParam(required = false) String customerId,
@@ -49,7 +48,7 @@ public class TicketController {
 			if (jwtService.getRole(auth.substring(7)).equalsIgnoreCase("ADMIN")) {
 				return new ResponseEntity<>("Only Admins are allowed to perform this activity!", HttpStatus.FORBIDDEN);
 			}
-			producer.pushMessage("Ticket Added!");
+//			producer.pushMessage("Ticket Added!");
 			logger.info("New Ticket Created!");
 			return new ResponseEntity<>(ticketService.addTicket(ticket, showId), HttpStatus.CREATED);
 		} catch (ShowNotFoundException e) {

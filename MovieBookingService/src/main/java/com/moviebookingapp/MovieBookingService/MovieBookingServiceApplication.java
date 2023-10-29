@@ -7,12 +7,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 
-import com.moviebookingapp.MovieBookingService.config.JWTFilter;
-
-import springfox.documentation.swagger2.annotations.EnableSwagger2;
+import com.moviebookingapp.MovieBookingService.config.JwtFilter;
 
 @SpringBootApplication
-@EnableSwagger2
 public class MovieBookingServiceApplication {
 
 	static Logger logger = LoggerFactory.getLogger(MovieBookingServiceApplication.class);
@@ -23,9 +20,9 @@ public class MovieBookingServiceApplication {
 	}
 
 	@Bean
-	public FilterRegistrationBean jwtFilterBean() {
-		FilterRegistrationBean filter = new FilterRegistrationBean();
-		filter.setFilter(new JWTFilter());
+	public FilterRegistrationBean<JwtFilter> jwtFilterBean() {
+		FilterRegistrationBean<JwtFilter> filter = new FilterRegistrationBean<>();
+		filter.setFilter(new JwtFilter());
 		filter.addUrlPatterns("/api/v1.0/movibooking/**");
 		return filter;
 	}

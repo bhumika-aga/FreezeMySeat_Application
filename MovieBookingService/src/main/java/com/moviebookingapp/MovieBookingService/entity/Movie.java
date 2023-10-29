@@ -2,8 +2,6 @@ package com.moviebookingapp.MovieBookingService.entity;
 
 import java.time.LocalDate;
 
-import org.hibernate.annotations.DynamicUpdate;
-
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
@@ -15,12 +13,12 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "movie")
-@DynamicUpdate
 public class Movie {
 
 	@Id
@@ -38,9 +36,12 @@ public class Movie {
 	@JsonSerialize(using = LocalDateSerializer.class)
 	@JsonDeserialize(using = LocalDateDeserializer.class)
 	private LocalDate movieDate;
-	@OneToOne
 	@JsonIgnore
+	@OneToOne
 	private Show show;
+	@JsonIgnore
+	@ManyToOne
+	private Theatre theatre;
 
 	public String getMovieName() {
 		return movieName;
@@ -124,6 +125,14 @@ public class Movie {
 
 	public String getMovieId() {
 		return movieId;
+	}
+
+	public Theatre getTheatre() {
+		return theatre;
+	}
+
+	public void setTheatre(Theatre theatre) {
+		this.theatre = theatre;
 	}
 
 	@Override

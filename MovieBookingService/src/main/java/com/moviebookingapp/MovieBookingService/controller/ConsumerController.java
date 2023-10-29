@@ -25,7 +25,7 @@ public class ConsumerController {
 
 	@PostMapping("/login")
 	public ResponseEntity<?> login(User user) throws RestClientException, Exception {
-		String baseUrl = "http://localhost:8081/api/v1.0/moviebooking/user/login";
+		String baseUrl = "http://localhost:8080/api/v1.0/moviebooking/user/login";
 		RestTemplate restTemplate = new RestTemplate();
 		ResponseEntity<?> result;
 		try {

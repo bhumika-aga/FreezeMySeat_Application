@@ -7,9 +7,11 @@ import java.util.List;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.moviebookingapp.MovieBookingService.entity.Movie;
 import com.moviebookingapp.MovieBookingService.entity.Show;
+import com.moviebookingapp.MovieBookingService.entity.Theatre;
 import com.moviebookingapp.MovieBookingService.exception.MovieNotFoundException;
 import com.moviebookingapp.MovieBookingService.exception.ShowNotFoundException;
 import com.moviebookingapp.MovieBookingService.exception.TheatreNotFoundException;
@@ -18,6 +20,7 @@ import com.moviebookingapp.MovieBookingService.repository.ShowRepository;
 import com.moviebookingapp.MovieBookingService.repository.TheatreRepository;
 import com.moviebookingapp.MovieBookingService.service.MovieService;
 
+@Service
 public class MovieServiceImpl implements MovieService {
 
 	@Autowired
@@ -38,14 +41,19 @@ public class MovieServiceImpl implements MovieService {
 	}
 
 	@Override
-	public Movie addMovieToShow(Movie movie, String showId) throws MovieNotFoundException, ShowNotFoundException {
+	public Movie addMovieToShowAndTheatre(Movie movie, String showId, String theatreId)
+			throws MovieNotFoundException, ShowNotFoundException, TheatreNotFoundException {
 		if (showId.equals(null) || showRepository.findById(showId).get().equals(null)) {
 			throw new ShowNotFoundException("Show does not exist!");
+		} else if (theatreId.equals(null) || theatreRepository.findById(theatreId).equals(null)) {
+			throw new MovieNotFoundException("Theatre does not exist");
 		} else if (movie.equals(null) || movieRepository.findById(movie.getMovieId()).get().equals(null)) {
 			throw new MovieNotFoundException("Movie does not exist");
 		}
 		Show show = showRepository.findById(showId).get();
+		Theatre theatre = theatreRepository.findById(theatreId).get();
 		movie.setShow(show);
+		movie.setTheatre(theatre);
 		return movieRepository.saveAndFlush(movie);
 	}
 

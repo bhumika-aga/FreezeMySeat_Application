@@ -5,10 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import com.moviebookingapp.MovieBookingService.entity.Theatre;
 
-import jakarta.transaction.Transactional;
-
 @Repository
-@Transactional
 public interface TheatreRepository extends JpaRepository<Theatre, String> {
 
 }

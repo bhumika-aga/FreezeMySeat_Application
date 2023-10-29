@@ -18,7 +18,6 @@ import com.moviebookingapp.MovieBookingService.config.JwtService;
 import com.moviebookingapp.MovieBookingService.entity.Seat;
 import com.moviebookingapp.MovieBookingService.exception.SeatNotFoundException;
 import com.moviebookingapp.MovieBookingService.service.SeatService;
-import com.moviebookingapp.MovieBookingService.service.impl.KafkaMessageProducer;
 
 @RestController
 @CrossOrigin("*")
@@ -33,8 +32,8 @@ public class SeatController {
 	@Autowired
 	private JwtService jwtService;
 
-	@Autowired
-	private KafkaMessageProducer producer;
+//	@Autowired
+//	private KafkaMessageProducer producer;
 
 	@PostMapping("/addSeat")
 	public ResponseEntity<?> addSeat(@RequestBody Seat seat, @RequestHeader("Authorization") String auth)
@@ -43,7 +42,7 @@ public class SeatController {
 			if (jwtService.getRole(auth.substring(7)).equalsIgnoreCase("ADMIN")) {
 				return new ResponseEntity<>("Only Admins are allowed to perform this activity!", HttpStatus.FORBIDDEN);
 			}
-			producer.pushMessage("Seat added!");
+//			producer.pushMessage("Seat added!");
 			logger.info("Seat Added Successfully!");
 			return new ResponseEntity<>(seatService.addSeat(seat), HttpStatus.CREATED);
 		} catch (SeatNotFoundException e) {
@@ -110,7 +109,7 @@ public class SeatController {
 			if (jwtService.getRole(auth.substring(7)).equalsIgnoreCase("ADMIN")) {
 				return new ResponseEntity<>("Only Admins are allowed to perform this activity!", HttpStatus.FORBIDDEN);
 			}
-			producer.pushMessage("Seat updated!");
+//			producer.pushMessage("Seat updated!");
 			logger.info("Seat updated successfully!");
 			return new ResponseEntity<>(seatService.updateSeat(seat), HttpStatus.OK);
 		} catch (SeatNotFoundException e) {

@@ -1,4 +1,4 @@
-package com.moviebookingapp.FreezeMySeatServer.component;
+package com.moviebookingapp.MovieBookingService.service.impl;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -11,11 +11,11 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 
-import com.moviebookingapp.FreezeMySeatServer.entity.User;
-import com.moviebookingapp.FreezeMySeatServer.repository.UserRepository;
+import com.moviebookingapp.MovieBookingService.entity.User;
+import com.moviebookingapp.MovieBookingService.repository.UserRepository;
 
 @Component
-public class UserDetail implements UserDetailsService {
+public class MyUserDetailsImpl implements UserDetailsService {
 
 	@Autowired
 	private UserRepository userRepository;

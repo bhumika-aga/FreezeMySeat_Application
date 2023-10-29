@@ -1,7 +1,10 @@
 package com.moviebookingapp.MovieBookingService.service.impl;
 
+import org.springframework.stereotype.Service;
+
 import com.moviebookingapp.MovieBookingService.service.InputValidatorService;
 
+@Service
 public class InputValidatorServiceImpl implements InputValidatorService {
 
 	@Override

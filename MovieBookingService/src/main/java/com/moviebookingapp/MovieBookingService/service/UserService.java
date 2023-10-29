@@ -1,14 +1,11 @@
-package com.moviebookingapp.FreezeMySeatServer.service;
+package com.moviebookingapp.MovieBookingService.service;
 
 import java.util.List;
 
-import org.springframework.stereotype.Service;
+import com.moviebookingapp.MovieBookingService.entity.User;
+import com.moviebookingapp.MovieBookingService.exception.UserCreationException;
+import com.moviebookingapp.MovieBookingService.exception.UserNotFoundException;
 
-import com.moviebookingapp.FreezeMySeatServer.entity.User;
-import com.moviebookingapp.FreezeMySeatServer.exception.UserCreationException;
-import com.moviebookingapp.FreezeMySeatServer.exception.UserNotFoundException;
-
-@Service
 public interface UserService {
 
 	public User addUser(User user) throws UserCreationException;

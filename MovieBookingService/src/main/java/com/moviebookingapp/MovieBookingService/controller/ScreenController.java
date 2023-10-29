@@ -21,7 +21,6 @@ import com.moviebookingapp.MovieBookingService.entity.Screen;
 import com.moviebookingapp.MovieBookingService.exception.ScreenNotFoundException;
 import com.moviebookingapp.MovieBookingService.exception.TheatreNotFoundException;
 import com.moviebookingapp.MovieBookingService.service.ScreenService;
-import com.moviebookingapp.MovieBookingService.service.impl.KafkaMessageProducer;
 
 @RestController
 @CrossOrigin("*")
@@ -36,8 +35,8 @@ public class ScreenController {
 	@Autowired
 	private JwtService jwtService;
 
-	@Autowired
-	private KafkaMessageProducer producer;
+//	@Autowired
+//	private KafkaMessageProducer producer;
 
 	@PostMapping("/addScreen")
 	public ResponseEntity<?> addScreen(@RequestBody Screen screen, @RequestParam(required = false) String theatreId,
@@ -46,7 +45,7 @@ public class ScreenController {
 			if (!jwtService.getRole(auth.substring(7)).equalsIgnoreCase("ADMIN")) {
 				return new ResponseEntity<>("Only Admins are allowed to perform this activity!", HttpStatus.FORBIDDEN);
 			}
-			producer.pushMessage("Screen added!");
+//			producer.pushMessage("Screen added!");
 			logger.info("Screen added to theatre!");
 			return new ResponseEntity<>(screenService.addScreen(screen, theatreId), HttpStatus.CREATED);
 		} catch (TheatreNotFoundException e) {
@@ -114,7 +113,7 @@ public class ScreenController {
 			if (!jwtService.getRole(auth.substring(7)).equalsIgnoreCase("ADMIN")) {
 				return new ResponseEntity<>("Only Admins are allowed to perform this activity!", HttpStatus.FORBIDDEN);
 			}
-			producer.pushMessage("Screen updated!");
+//			producer.pushMessage("Screen updated!");
 			logger.info("Screen updated!");
 			return new ResponseEntity<>(screenService.updateScreen(screen, theatreId), HttpStatus.FOUND);
 		} catch (ScreenNotFoundException e) {
